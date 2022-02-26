@@ -26,43 +26,19 @@
             tools:context=".presentation.coin_detail.CoinDetailFragment">
 
             <TextView
-                android:id="@+id/coin_rank"
-                android:layout_width="wrap_content"
+                android:id="@+id/coin_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/text_white"
-                android:textSize="18sp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/coin_is_active"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tool:text="1." />
-
-            <TextView
-                android:id="@+id/coin_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textColor="@color/text_white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/coin_rank"
-                app:layout_constraintStart_toEndOf="@+id/coin_rank"
-                app:layout_constraintTop_toTopOf="@+id/coin_rank"
-                tool:text="Bitcoin" />
-
-            <TextView
-                android:id="@+id/coin_symbol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/text_white"
-                android:textSize="18sp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/coin_name"
-                app:layout_constraintEnd_toStartOf="@+id/coin_is_active"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/coin_name"
-                app:layout_constraintTop_toTopOf="@+id/coin_name"
-                tool:text="(BTC)" />
+                tool:text="1. Bitcoin (BTC)" />
 
             <TextView
                 android:id="@+id/coin_is_active"
@@ -71,10 +47,9 @@
                 android:layout_marginEnd="16dp"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/coin_symbol"
+                app:layout_constraintBottom_toBottomOf="@+id/coin_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintTop_toTopOf="@+id/coin_symbol"
+                app:layout_constraintTop_toTopOf="@+id/coin_name"
                 tool:text="active"
                 tool:textColor="@android:color/holo_green_dark" />
 
@@ -84,9 +59,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/text_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/coin_is_active"
-                app:layout_constraintStart_toStartOf="@+id/coin_rank"
+                app:layout_constraintStart_toStartOf="@+id/coin_name"
                 app:layout_constraintTop_toBottomOf="@+id/coin_name"
                 tool:text="@string/lorem" />
 
@@ -97,7 +72,8 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/tags"
                 android:textColor="@color/text_white"
-                android:textSize="18sp"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/coin_description"
                 app:layout_constraintTop_toBottomOf="@+id/coin_description" />
@@ -117,9 +93,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/team_members"
-                android:visibility="gone"
                 android:textColor="@color/text_white"
-                android:textSize="18sp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/chip_group"
                 app:layout_constraintTop_toBottomOf="@+id/chip_group" />
 
@@ -152,8 +129,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:textColor="@color/text_white"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

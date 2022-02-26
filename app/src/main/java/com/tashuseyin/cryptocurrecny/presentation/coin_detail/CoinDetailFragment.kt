@@ -1,5 +1,6 @@
 package com.tashuseyin.cryptocurrecny.presentation.coin_detail
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,15 +40,14 @@ class CoinDetailFragment : BindingFragment<FragmentCoinDetailBinding>() {
         observeViewModel()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         lifecycleScope.launch {
             coinDetailViewModel.state.collect { state ->
                 state.coin?.let { coin ->
                     binding.tags.isVisible = true
                     binding.teamMember.isVisible = true
-                    binding.coinRank.text = coin.rank.toString().plus(".")
-                    binding.coinName.text = coin.name
-                    binding.coinSymbol.text = "(${coin.symbol})"
+                    binding.coinName.text = "${coin.rank}. ${coin.name} (${coin.symbol})"
                     binding.coinIsActive.text = if (coin.is_active) "activate" else "inactivate"
                     binding.coinIsActive.setTextColor(if (coin.is_active) Color.GREEN else Color.RED)
                     binding.coinDescription.text = coin.description

@@ -9,38 +9,17 @@
     xmlns:tool="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/coin_rank"
-        android:layout_width="wrap_content"
+        android:id="@+id/coin_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/text_white"
         android:textSize="18sp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/coin_is_active"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tool:text="1." />
+        tool:text="1. Bitcoin (BTC)" />
 
-    <TextView
-        android:id="@+id/coin_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_white"
-        android:textSize="18sp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/coin_rank"
-        app:layout_constraintStart_toEndOf="@+id/coin_rank"
-        app:layout_constraintTop_toTopOf="@+id/coin_rank"
-        tool:text="Bitcoin" />
-
-    <TextView
-        android:id="@+id/coin_symbol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_white"
-        android:textSize="18sp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/coin_name"
-        app:layout_constraintStart_toEndOf="@+id/coin_name"
-        app:layout_constraintTop_toTopOf="@+id/coin_name"
-        tool:text="(BTC)" />
 
     <TextView
         android:id="@+id/coin_is_active"
@@ -48,11 +27,10 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/coin_symbol"
+        app:layout_constraintBottom_toBottomOf="@+id/coin_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/coin_symbol"
-        app:layout_constraintTop_toTopOf="@+id/coin_symbol"
+        app:layout_constraintTop_toTopOf="@+id/coin_name"
         tool:text="active"
         tool:textColor="@android:color/holo_green_dark" />
 
