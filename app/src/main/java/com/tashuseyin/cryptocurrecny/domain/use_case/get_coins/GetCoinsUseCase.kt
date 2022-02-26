@@ -26,17 +26,17 @@ class GetCoinsUseCase @Inject constructor(
         }
     }
 
-    fun getCoinList(): Flow<Resource<List<Coin>>> = flow {
-        try {
-            emit(Resource.Loading())
-            val coins = repository.getCoins().map { it.toCoin() }
-            emit(Resource.Success(coins))
-        } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
-        } catch (e: IOException) {
-            emit(Resource.Error("Couldn't reach server. Check your internet connection."))
-        }
-    }
+//    fun getCoinList(): Flow<Resource<List<Coin>>> = flow {
+//        try {
+//            emit(Resource.Loading())
+//            val coins = repository.getCoins().map { it.toCoin() }
+//            emit(Resource.Success(coins))
+//        } catch (e: HttpException) {
+//            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
+//        } catch (e: IOException) {
+//            emit(Resource.Error("Couldn't reach server. Check your internet connection."))
+//        }
+//    }
 
 
 }
