@@ -5,7 +5,7 @@ import com.tashuseyin.cryptocurrecny.domain.model.CoinDetail
 data class CoinDetailDto(
     val contract: String,
     val contracts: List<Contract>,
-    val description: String,
+    val description: String?,
     val development_status: String,
     val first_data_at: String,
     val hardware_wallet: Boolean,
@@ -26,8 +26,8 @@ data class CoinDetailDto(
     val rank: Int,
     val started_at: String,
     val symbol: String,
-    val tags: List<Tag>,
-    val team: List<TeamMember>,
+    val tags: List<Tag>?,
+    val team: List<TeamMember>?,
     val type: String,
     val whitepaper: Whitepaper
 )
@@ -40,7 +40,7 @@ fun CoinDetailDto.toCoinDetail(): CoinDetail {
         name = name,
         rank = rank,
         symbol = symbol,
-        tags = tags.map { it.name },
+        tags = tags?.map { it.name },
         team = team
     )
 }

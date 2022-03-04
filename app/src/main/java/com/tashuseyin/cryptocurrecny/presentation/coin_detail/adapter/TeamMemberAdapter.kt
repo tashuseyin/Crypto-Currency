@@ -7,15 +7,7 @@ import com.tashuseyin.cryptocurrecny.data.remote.dto.TeamMember
 import com.tashuseyin.cryptocurrecny.databinding.TeamMemberCardBinding
 
 class TeamMemberAdapter(private val teamMemberList: List<TeamMember>) :
-    RecyclerView.Adapter<TeamMemberAdapter.TeamMemberViewHolder>() {
-
-    inner class TeamMemberViewHolder(private val binding: TeamMemberCardBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(teamMember: TeamMember) {
-            binding.memberName.text = teamMember.name
-            binding.memberPosition.text = teamMember.position
-        }
-    }
+    RecyclerView.Adapter<TeamMemberViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamMemberViewHolder {
         val binding =

@@ -1,6 +1,5 @@
 package com.tashuseyin.cryptocurrecny.presentation.coin_detail
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,31 +39,40 @@ class CoinDetailFragment : BindingFragment<FragmentCoinDetailBinding>() {
         observeViewModel()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         lifecycleScope.launch {
             coinDetailViewModel.state.collect { state ->
-                state.coin?.let { coin ->
-                    binding.tags.isVisible = true
-                    binding.teamMember.isVisible = true
-                    binding.coinName.text = "${coin.rank}. ${coin.name} (${coin.symbol})"
-                    binding.coinIsActive.text = if (coin.is_active) "activate" else "inactivate"
-                    binding.coinIsActive.setTextColor(if (coin.is_active) Color.GREEN else Color.RED)
-                    binding.coinDescription.text = coin.description
-                    coin.tags.forEach { tag ->
-                        dynamicChpGroup(tag)
-                    }
-                    val adapter = TeamMemberAdapter(coin.team)
-                    binding.recyclerview.adapter = adapter
-                }
-                binding.progressBar.isVisible = state.isLoading
+                binding.apply {
+                    state.coin?.let { coin ->
+                        val coinTitle = "${coin.rank}. ${coin.name} (${coin.symbol})"
+                        coinName.text = coinTitle
+                        coinIsActive.text = if (coin.is_active) "activate" else "inactivate"
+                        coinIsActive.setTextColor(if (coin.is_active) Color.GREEN else Color.RED)
+                        coinDescription.text = coin.description
 
-                if (state.error.isNotBlank()) {
-                    binding.errorText.text = state.error
+                        tagsText.isVisible = coin.tags?.isNotEmpty() ?: false
+                        coin.tags?.let { tags ->
+                            tags.forEach { tag ->
+                                dynamicChpGroup(tag)
+                            }
+                        }
+
+                        teamMember.isVisible = coin.team?.isNotEmpty() ?: false
+                        val adapter = coin.team?.let { team ->
+                            TeamMemberAdapter(team)
+                        }
+                        binding.recyclerview.adapter = adapter
+                    }
+                    progressBar.isVisible = state.isLoading
+
+                    if (state.error.isNotBlank()) {
+                        errorText.text = state.error
+                    }
                 }
             }
         }
     }
+
 
     private fun dynamicChpGroup(text: String) {
         val chip = layoutInflater.inflate(R.layout.item_chip, binding.chipGroup, false) as Chip
